@@ -1,5 +1,10 @@
 from .baidu_translate import BaiduTranslateApi
-from .dt import BaiduTranslateResult, BaiduTranslateItem, NiuTranslateResult
+from .dt import (
+    BaiduTranslateResult,
+    BaiduTranslateItem,
+    NiuTranslateResult,
+    NiuTranslateArgs,
+)
 from .niu_translate import NiuTranslationApi
 
 __all__ = [
@@ -8,4 +13,5 @@ __all__ = [
     "BaiduTranslateResult",
     "NiuTranslateResult",
     "NiuTranslationApi",
+    "NiuTranslateArgs",
 ]

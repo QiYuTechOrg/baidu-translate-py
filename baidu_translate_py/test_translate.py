@@ -2,6 +2,7 @@ import json
 import os
 
 from .baidu_translate import BaiduTranslateApi
+from .dt import NiuTranslateArgs
 from .niu_translate import NiuTranslationApi
 
 
@@ -31,5 +32,6 @@ def test_niu_xml_translation():
     src_text = """
 小牛翻译<p style="color: red">很不错</p>。
 """
-    resp = trans.xml_translate(src_text=src_text, src_lang="zh", dst_lang="en")
+    args = NiuTranslateArgs(src_text=src_text, src_lang="zh", dst_lang="en")
+    resp = trans.xml_translate(args=args)
     print(resp)
