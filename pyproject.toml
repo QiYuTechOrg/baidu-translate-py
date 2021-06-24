@@ -1,8 +1,11 @@
 [tool.poetry]
 name = "baidu-translate-py"
 version = "0.1.0"
-description = "百度翻译 API"
+description = "Python 翻译 API [当前支持:百度翻译、小牛翻译]"
 authors = ["dev <dev@qiyutech.tech>"]
+homepage = "https://oss.qiyutech.tech/"
+repository = "https://github.com/QiYuTechOrg/baidu-translate-py"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
