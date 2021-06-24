@@ -3,10 +3,12 @@ import secrets
 
 import requests
 
-__all__ = ["BaiduTranslate"]
+from .dt import BaiduTranslateResult
+
+__all__ = ["BaiduTranslateApi"]
 
 
-class BaiduTranslate(object):
+class BaiduTranslateApi(object):
     """
     百度翻译API
     """
@@ -23,7 +25,9 @@ class BaiduTranslate(object):
         self._secret = secret
         self._session = requests.Session()
 
-    def common_translate(self, q: str, dst_lang: str, src_lang: str = "auto"):
+    def common_translate(
+        self, q: str, dst_lang: str, src_lang: str = "auto"
+    ) -> BaiduTranslateResult:
         """
         通用翻译文档: https://fanyi-api.baidu.com/doc/21
 
@@ -32,20 +36,24 @@ class BaiduTranslate(object):
         :param q: 翻译的内容 [6000个字节以内，一般为 2000 个汉字]
         :param dst_lang: 目标语言
         :param src_lang: 源语言
+        :except ValidationError
         :return:
         """
         url = "https://fanyi-api.baidu.com/api/trans/vip/translate"
         salt = secrets.token_urlsafe(16)
 
-        resp = self._session.post(url, data={
-            "q": q,
-            "from": src_lang,
-            "to": dst_lang,
-            "appid": self._app_id,
-            "salt": salt,
-            "sign": self._compute_sign(q, salt=salt),
-        })
-        return resp.json()
+        resp = self._session.post(
+            url,
+            data={
+                "q": q,
+                "from": src_lang,
+                "to": dst_lang,
+                "appid": self._app_id,
+                "salt": salt,
+                "sign": self._compute_sign(q, salt=salt),
+            },
+        )
+        return BaiduTranslateResult(**resp.json())
 
     def _compute_sign(self, q: str, salt: str) -> str:
         """

@@ -8,6 +8,7 @@ authors = ["dev <dev@qiyutech.tech>"]
 python = "^3.9"
 
 requests = ">=2.25,<3"
+pydantic = ">=1.8,<2"
 
 [tool.poetry.dev-dependencies]
 black = "*"

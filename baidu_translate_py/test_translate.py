@@ -1,7 +1,7 @@
 import json
 import os
 
-from .baidu_translate import BaiduTranslate
+from .baidu_translate import BaiduTranslateApi
 
 
 def load_secrets() -> dict:
@@ -10,6 +10,6 @@ def load_secrets() -> dict:
 
 
 def test_baidu_translate():
-    trans = BaiduTranslate(**load_secrets())
+    trans = BaiduTranslateApi(**load_secrets())
     resp = trans.common_translate(q="百度翻译测试。", dst_lang="en")
     print(resp)
