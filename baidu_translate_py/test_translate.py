@@ -33,5 +33,6 @@ def test_niu_xml_translation():
 小牛翻译<p style="color: red">很不错</p>。
 """
     args = NiuTranslateArgs(src_text=src_text, src_lang="zh", dst_lang="en")
-    resp = trans.xml_translate(args=args)
-    print(resp)
+    xml_resp = trans.xml_translate(args=args)
+    text_resp = trans.text_translate(args=args)
+    print(xml_resp, text_resp)
