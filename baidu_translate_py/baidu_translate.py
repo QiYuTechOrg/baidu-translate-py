@@ -11,6 +11,8 @@ __all__ = ["BaiduTranslateApi"]
 class BaiduTranslateApi(object):
     """
     百度翻译API
+
+    免费版本QPS限制为: 1
     """
 
     def __init__(self, app_id: str, secret: str):

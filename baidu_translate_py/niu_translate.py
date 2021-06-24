@@ -9,6 +9,8 @@ class NiuTranslationApi(object):
     """
     小牛翻译
     官方网站: https://niutrans.com/
+
+    免费的API接口QPS限制为: 3
     """
 
     def __init__(self, api_key: str):
