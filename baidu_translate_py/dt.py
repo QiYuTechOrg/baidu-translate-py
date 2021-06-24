@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel, Field
 
-__all__ = ["BaiduTranslateResult", "BaiduTranslateItem"]
+__all__ = ["BaiduTranslateResult", "BaiduTranslateItem", "NiuTranslateResult"]
 
 
 class BaiduTranslateItem(BaseModel):
@@ -14,3 +14,9 @@ class BaiduTranslateResult(BaseModel):
     from_: str = Field(..., title="源语言", alias="from")
     to: str = Field(..., title="目标语言")
     trans_result: Optional[List[BaiduTranslateItem]] = Field(None, title="翻译结果")
+
+
+class NiuTranslateResult(BaseModel):
+    from_: str = Field(..., title="源语言", alias="from")
+    to: str = Field(..., title="目标语言")
+    tgt_text: str = Field(..., title="翻译结果")
